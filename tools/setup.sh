@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# =============================================================================
+# Resume Craft for Claude Code — Linux/macOS 一键安装脚本
+# 自动安装: Python依赖(jinja2/html2text/weasyprint) + Node.js依赖(docx/puppeteer)
+# 用法: bash tools/setup.sh
+# =============================================================================
 set -e
 
 echo "========================================"

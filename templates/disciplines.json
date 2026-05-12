@@ -1,5 +1,6 @@
 {
   "_author": "MistyBridge",
+  "_description": "Resume Craft for Claude Code — 17个学科模板配置（含通用）。每个学科定义keywords(自动匹配)/sections(模块顺序)/emphasis(权重)/theme(默认主题)/design_notes(设计理念)。",
   "_说明": "每个学科的模板配置定义了该领域最优秀的简历格式。Claude 会根据用户目标岗位匹配对应学科，在此基础上做个性化调整后让用户确认，再逐段填充内容。",
 
   "计算机科学": {

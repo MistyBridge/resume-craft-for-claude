@@ -1,5 +1,6 @@
 {
   "_author": "MistyBridge",
+  "_description": "Resume Craft for Claude Code — 示例个人档案（张三·高级前端开发）。展示profile.json标准结构，供测试和新用户参考。",
   "meta": {
     "length": "normal",
     "job_context": {

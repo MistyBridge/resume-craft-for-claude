@@ -1,4 +1,9 @@
 @echo off
+REM =============================================================================
+REM Resume Craft for Claude Code — Windows 一键安装脚本
+REM 自动安装: Python依赖(jinja2/html2text/weasyprint) + Node.js依赖(docx/puppeteer)
+REM 用法: 双击运行 或 命令行执行 tools\setup.bat
+REM =============================================================================
 echo ========================================
 echo   简历 Skill — 工具依赖安装
 echo ========================================

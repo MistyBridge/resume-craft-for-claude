@@ -1,4 +1,5 @@
 {
+  "_comment": "Resume Craft for Claude Code — Node.js 格式转换工具。docx: JSON→DOCX生成 | puppeteer: HTML→PDF渲染 | npm install 安装所有依赖。",
   "author": "MistyBridge",
   "name": "resume-skill-tools",
   "version": "1.0.0",

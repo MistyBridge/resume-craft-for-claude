@@ -1,5 +1,6 @@
 {
   "_author": "MistyBridge",
+  "_description": "Resume Craft for Claude Code — 6套视觉主题配置。每套含colors/fonts/layout三组CSS变量，由render.py通过Jinja2注入resume.html。",
   "onyx": {
     "name": "Onyx · 极简黑金",
     "description": "黑白基调 + 金色点缀，适合金融、法律、咨询等传统行业",
