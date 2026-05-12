@@ -1,0 +1,14 @@
+# Resume Skill — Python Dependencies
+# Install: pip install -r requirements.txt
+
+jinja2>=3.0
+html2text>=2024.2
+weasyprint>=60.0
+
+# DOCX generation (Node.js alternative)
+# cd tools && npm install
+# → uses docx npm package (github.com/dolanmedia/docx, 4k+ stars)
+
+# PDF generation (Node.js alternative)
+# cd tools && npm install
+# → uses puppeteer (github.com/puppeteer/puppeteer, 88k+ stars)

@@ -1,0 +1,241 @@
+{
+  "_说明": "每个学科的模板配置定义了该领域最优秀的简历格式。Claude 会根据用户目标岗位匹配对应学科，在此基础上做个性化调整后让用户确认，再逐段填充内容。",
+
+  "计算机科学": {
+    "name": "计算机科学 / 软件工程",
+    "keywords": ["计算机", "软件", "前端", "后端", "算法", "AI", "人工智能", "数据科学", "机器学习", "信息安全", "网络", "运维", "DevOps", "SRE"],
+    "sections": ["skills", "experience", "projects", "education", "additional"],
+    "show_summary": false,
+    "emphasis": {"skills": "dominant", "projects": "high", "experience": "high", "education": "normal"},
+    "layout": "single-column",
+    "theme": "azure",
+    "skill_display": "bars",
+    "design_notes": "技能主导型。技术栈标签化前置，项目经历突出GitHub链接和量化成果，教育背景压缩。HR筛选技术岗时首先扫技能匹配度，因此技能矩阵放在最前面。",
+    "section_labels": {"skills": "技术能力", "projects": "项目作品", "experience": "工作经历", "education": "教育背景"},
+    "max_pages": 2
+  },
+
+  "电子信息": {
+    "name": "电子信息 / 通信工程",
+    "keywords": ["电子", "通信", "嵌入式", "芯片", "IC", "FPGA", "PCB", "射频", "物联网", "5G", "半导体", "自动化"],
+    "sections": ["skills", "experience", "projects", "education", "additional"],
+    "show_summary": false,
+    "emphasis": {"skills": "high", "projects": "high", "experience": "high", "education": "high"},
+    "layout": "single-column",
+    "theme": "azure",
+    "skill_display": "tags",
+    "design_notes": "技术均衡型。硬件+软件技能并重，项目强调芯片/电路/系统级成果，教育背景含实验室经历和竞赛。",
+    "section_labels": {"skills": "专业技能", "projects": "项目/课题", "experience": "工作/实习经历", "education": "教育背景"},
+    "max_pages": 2
+  },
+
+  "金融经济": {
+    "name": "金融学 / 经济学",
+    "keywords": ["金融", "经济", "投资", "证券", "基金", "银行", "保险", "风控", "量化", "交易", "投行", "PE", "VC"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "education": "high", "skills": "normal", "summary": "high"},
+    "layout": "single-column",
+    "theme": "onyx",
+    "skill_display": "tags",
+    "design_notes": "资历导向型。个人总结突出职业定位，工作经历强调交易规模/管理资产/投资回报等可量化成果，教育背景重视学校排名和GPA，证书（CFA/CPA/FRM）单独列出。",
+    "section_labels": {"summary": "个人概述", "experience": "工作经历", "education": "教育背景", "skills": "专业技能与证书"},
+    "max_pages": 1
+  },
+
+  "会计审计": {
+    "name": "会计学 / 审计学",
+    "keywords": ["会计", "审计", "财务", "税务", "出纳", "CPA", "ACCA", "事务所", "核算", "报表"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "education": "high", "skills": "high", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "onyx",
+    "skill_display": "tags",
+    "design_notes": "证书驱动型。CPA/ACCA/税务师等证书前置高亮，工作经历强调审计项目规模/行业覆盖/合规成果，教育背景标注专业方向。",
+    "section_labels": {"summary": "职业概述", "experience": "工作经历", "education": "教育背景", "skills": "资质证书与技能"},
+    "max_pages": 1
+  },
+
+  "工商管理": {
+    "name": "工商管理 / 人力资源 / 行政管理",
+    "keywords": ["管理", "HR", "人力资源", "行政", "运营", "商务", "咨询", "战略", "PMO", "项目经理"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "summary": "high", "skills": "normal", "education": "normal"},
+    "layout": "single-column",
+    "theme": "onyx",
+    "skill_display": "tags",
+    "design_notes": "经历叙事型。个人总结强调管理风格和核心能力，工作经历用STAR方法突出管理成果/流程优化/成本节省，软技能与管理工具并重。",
+    "section_labels": {"summary": "个人概述", "experience": "工作经历", "education": "教育背景", "skills": "专业能力"},
+    "max_pages": 2
+  },
+
+  "市场营销": {
+    "name": "市场营销 / 广告 / 公关",
+    "keywords": ["市场", "营销", "品牌", "广告", "公关", "新媒体", "运营", "增长", "投放", "策划", "活动"],
+    "sections": ["summary", "experience", "projects", "skills", "education", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "projects": "high", "skills": "normal", "summary": "high"},
+    "layout": "single-column",
+    "theme": "terracotta",
+    "skill_display": "tags",
+    "design_notes": "成果数据型。每条经历必须带量化成果（ROI/增长率/曝光量/转化率），项目展示campaign案例，工具技能以Martech矩阵呈现。",
+    "section_labels": {"summary": "个人概述", "experience": "工作经历", "projects": "营销案例", "skills": "工具与技能", "education": "教育背景"},
+    "max_pages": 2
+  },
+
+  "法学": {
+    "name": "法学",
+    "keywords": ["法律", "律师", "法务", "合规", "法官", "检察", "仲裁", "知识产权", "公司法", "诉讼"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "education": "high", "skills": "high", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "ivy",
+    "skill_display": "tags",
+    "design_notes": "资质导向型。执业资格和律所背景前置，工作经历强调案件类型/标的额/胜诉率等专业指标，教育背景含法学院排名和法考成绩。",
+    "section_labels": {"summary": "执业概述", "experience": "执业经历", "education": "教育背景", "skills": "执业资质与专业领域"},
+    "max_pages": 2
+  },
+
+  "教育师范": {
+    "name": "教育学 / 师范",
+    "keywords": ["教育", "教师", "教学", "培训", "课程", "教研", "班主任", "辅导员", "讲师", "教授"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "high", "education": "dominant", "skills": "high", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "emerald",
+    "skill_display": "tags",
+    "design_notes": "学历主导型。教育背景详列学历层次/专业方向/教师资格证，教学经历强调课程量/学生规模/教学成果，科研成果和培训经历辅助展示。",
+    "section_labels": {"summary": "教学理念", "experience": "教学/工作经历", "education": "学历与资质", "skills": "教学能力与技能"},
+    "max_pages": 2
+  },
+
+  "医学药学": {
+    "name": "临床医学 / 药学 / 护理",
+    "keywords": ["医学", "临床", "药学", "护理", "医生", "药剂", "中医", "口腔", "公共卫生", "影像"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "education": "dominant", "skills": "high", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "emerald",
+    "skill_display": "tags",
+    "design_notes": "资质经验并重型。执业医师证/规培证/专科资质前置，临床经历强调科室/病例量/手术类型，科研论文单独列出，学历含医学院和规培经历。",
+    "section_labels": {"summary": "专业概述", "experience": "临床/工作经历", "education": "学历与培训", "skills": "专业资质与技能"},
+    "max_pages": 2
+  },
+
+  "机械制造": {
+    "name": "机械工程 / 材料科学 / 工业工程",
+    "keywords": ["机械", "材料", "制造", "模具", "工艺", "质检", "设备", "热力学", "流体", "机器人"],
+    "sections": ["skills", "experience", "projects", "education", "additional"],
+    "show_summary": false,
+    "emphasis": {"skills": "high", "experience": "high", "projects": "high", "education": "normal"},
+    "layout": "single-column",
+    "theme": "azure",
+    "skill_display": "tags",
+    "design_notes": "技能项目并重型。CAD/CAE/CAM等工业软件和工艺能力前置，项目强调设计/仿真/制造全流程，经历突出产线优化/成本降低/良率提升。",
+    "section_labels": {"skills": "专业技能", "experience": "工作经历", "projects": "工程项目", "education": "教育背景"},
+    "max_pages": 2
+  },
+
+  "土木建筑": {
+    "name": "土木工程 / 建筑学 / 城市规划",
+    "keywords": ["土木", "建筑", "结构", "桥梁", "隧道", "施工", "造价", "监理", "城市规划", "景观"],
+    "sections": ["summary", "experience", "projects", "skills", "education", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "dominant", "projects": "dominant", "skills": "normal", "education": "normal"},
+    "layout": "single-column",
+    "theme": "onyx",
+    "skill_display": "tags",
+    "design_notes": "项目经验主导型。项目列表作为核心板块，每个项目含规模/工期/造价/角色，工作经历按项目组织，资质证书（建造师/结构师/造价师）突出显示。",
+    "section_labels": {"summary": "专业概述", "experience": "工作经历", "projects": "代表项目", "skills": "专业技能与资质"},
+    "max_pages": 2
+  },
+
+  "设计艺术": {
+    "name": "设计学 / 美术 / 数字媒体",
+    "keywords": ["设计", "UI", "UX", "平面", "视觉", "交互", "产品设计", "动画", "插画", "摄影", "视频"],
+    "sections": ["summary", "projects", "experience", "skills", "education", "additional"],
+    "show_summary": true,
+    "emphasis": {"projects": "dominant", "skills": "high", "experience": "normal", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "terracotta",
+    "skill_display": "tags",
+    "design_notes": "作品集导向型。项目/作品链接前置作为核心展示，技能以设计工具+设计方法论矩阵呈现，工作经历简洁，强调设计成果的业务影响力。",
+    "section_labels": {"summary": "设计理念", "projects": "作品与项目", "experience": "工作经历", "skills": "工具与方法论"},
+    "max_pages": 2
+  },
+
+  "新闻传媒": {
+    "name": "新闻学 / 传播学 / 新媒体",
+    "keywords": ["新闻", "传媒", "记者", "编辑", "新媒体", "内容", "短视频", "撰稿", "出版", "编导"],
+    "sections": ["summary", "projects", "experience", "skills", "education", "additional"],
+    "show_summary": true,
+    "emphasis": {"projects": "dominant", "experience": "high", "skills": "normal", "summary": "high"},
+    "layout": "single-column",
+    "theme": "terracotta",
+    "skill_display": "tags",
+    "design_notes": "作品成果型。代表作品/报道/视频链接前置，工作经历强调选题量/阅读量/传播效果等量化指标，技能含采编播全流程工具。",
+    "section_labels": {"summary": "个人简介", "projects": "代表作品", "experience": "工作经历", "skills": "专业技能"},
+    "max_pages": 2
+  },
+
+  "外语翻译": {
+    "name": "外语 / 翻译 / 国际关系",
+    "keywords": ["英语", "日语", "韩语", "翻译", "口译", "笔译", "同传", "外交", "国际", "外贸"],
+    "sections": ["summary", "experience", "education", "skills", "additional"],
+    "show_summary": true,
+    "emphasis": {"skills": "dominant", "experience": "high", "education": "high", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "ivy",
+    "skill_display": "tags",
+    "design_notes": "语言能力主导型。语言证书（专八/雅思/托福/日语N1/CATTI）置顶高亮，工作经历强调翻译场景/领域/规模，海外经历突出展示。",
+    "section_labels": {"summary": "专业概述", "experience": "工作经历", "education": "教育背景", "skills": "语言能力与证书"},
+    "max_pages": 1
+  },
+
+  "生化环材": {
+    "name": "生物学 / 化学 / 环境科学",
+    "keywords": ["生物", "化学", "环境", "制药", "实验", "检测", "研发", "合成", "环保", "食品"],
+    "sections": ["skills", "experience", "education", "projects", "additional"],
+    "show_summary": false,
+    "emphasis": {"skills": "high", "experience": "high", "education": "high", "projects": "normal"},
+    "layout": "single-column",
+    "theme": "emerald",
+    "skill_display": "tags",
+    "design_notes": "实验能力导向型。实验技能/仪器操作/分析方法前置，工作经历强调实验量/研发管线/检测标准，教育含实验室经历和导师，论文专利单独列出。",
+    "section_labels": {"skills": "实验技能", "experience": "工作/科研经历", "education": "教育背景", "projects": "课题与成果"},
+    "max_pages": 2
+  },
+
+  "数理统计": {
+    "name": "数学 / 物理学 / 统计学",
+    "keywords": ["数学", "物理", "统计", "数据分析", "建模", "精算", "量化", "科研"],
+    "sections": ["skills", "education", "experience", "projects", "additional"],
+    "show_summary": false,
+    "emphasis": {"skills": "dominant", "education": "dominant", "experience": "normal", "projects": "normal"},
+    "layout": "single-column",
+    "theme": "ivy",
+    "skill_display": "bars",
+    "design_notes": "学术能力主导型。数学/统计工具和编程能力前置，学历详列研究方向/GPA/论文，经历偏向数据建模/算法开发/科研项目，竞赛成绩加分。",
+    "section_labels": {"skills": "专业技能", "education": "学历与研究", "experience": "工作/研究经历", "projects": "课题与论文"},
+    "max_pages": 2
+  },
+
+  "通用": {
+    "name": "通用",
+    "keywords": [],
+    "sections": ["summary", "experience", "education", "skills", "projects", "additional"],
+    "show_summary": true,
+    "emphasis": {"experience": "high", "education": "normal", "skills": "normal", "summary": "normal"},
+    "layout": "single-column",
+    "theme": "azure",
+    "skill_display": "tags",
+    "design_notes": "通用均衡型。当目标岗位无法匹配到具体学科时使用。各板块权重均衡，Claude根据具体情况做个性化调整。",
+    "section_labels": {"summary": "个人总结", "experience": "工作经历", "education": "教育背景", "skills": "专业技能"},
+    "max_pages": 1
+  }
+}

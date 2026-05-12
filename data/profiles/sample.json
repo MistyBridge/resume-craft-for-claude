@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "length": "normal",
+    "job_context": {
+      "company": "示例科技",
+      "role": "高级前端开发工程师",
+      "jd_keywords": ["React", "TypeScript", "微信小程序", "性能优化", "工程化"],
+      "must_have": ["React", "TypeScript", "小程序开发经验"],
+      "nice_to_have": ["Node.js", "CI/CD", "团队管理经验"]
+    }
+  },
+  "basics": {
+    "name": "张三",
+    "title": "高级前端开发工程师",
+    "email": "zhangsan@example.com",
+    "phone": "138-0000-0000",
+    "location": "深圳 · 广东",
+    "github": "zhangsan",
+    "linkedin": "linkedin.com/in/zhangsan"
+  },
+  "summary": {
+    "polished": "拥有5年前端开发经验，专注于 React 生态与小程序开发。具备从0到1搭建前端工程化体系的能力，对性能优化有深入实践。善于跨团队协作，有技术指导经验。"
+  },
+  "skills": {
+    "hard_skills": [
+      {"name": "React", "proficiency": "精通"},
+      {"name": "TypeScript", "proficiency": "精通"},
+      {"name": "Vue.js", "proficiency": "熟练"},
+      {"name": "Node.js", "proficiency": "熟练"},
+      {"name": "微信小程序", "proficiency": "精通"},
+      {"name": "Webpack/Vite", "proficiency": "熟练"}
+    ],
+    "soft_skills": ["跨部门协作", "技术方案设计", "新人指导"],
+    "languages": [
+      {"name": "中文", "level": "母语"},
+      {"name": "英语", "level": "商务交流"}
+    ],
+    "tools": ["Git", "Docker", "GitHub Actions", "Jest", "Figma"]
+  },
+  "experience": [
+    {
+      "company": "腾讯科技",
+      "title": "前端开发工程师",
+      "start_date": "2022-03",
+      "end_date": "2025-06",
+      "is_current": false,
+      "location": "深圳",
+      "bullets": [
+        {"raw": "负责微信小程序核心模块开发", "polished": "主导微信小程序支付与订单核心模块的前端架构设计与开发，覆盖日活用户200万+"},
+        {"raw": "优化首屏加载性能", "polished": "针对小程序首屏加载瓶颈进行系统分析，通过分包加载与资源预加载策略将首屏时间降低35%"},
+        {"raw": "搭建前端工程化体系", "polished": "从0到1搭建团队前端工程化体系，统一 ESLint/Prettier 规范，集成 CI/CD 流水线"}
+      ],
+      "technologies": ["React", "TypeScript", "微信小程序", "Webpack", "Jest"]
+    },
+    {
+      "company": "字节跳动",
+      "title": "前端开发工程师",
+      "start_date": "2020-07",
+      "end_date": "2022-02",
+      "is_current": false,
+      "location": "北京",
+      "bullets": [
+        {"raw": "参与抖音内部管理后台开发", "polished": "参与抖音电商内部管理后台的 React 技术栈改造，完成12个核心业务模块的组件化重构"},
+        {"raw": "开发公共组件库", "polished": "主导团队公共 UI 组件库的设计与开发，覆盖表单/表格/弹窗等高频场景，团队复用率达80%"}
+      ],
+      "technologies": ["React", "TypeScript", "Ant Design", "Less"]
+    }
+  ],
+  "education": [
+    {
+      "school": "华中科技大学",
+      "degree": "本科",
+      "major": "计算机科学与技术",
+      "start_date": "2016-09",
+      "end_date": "2020-06",
+      "gpa": "3.6/4.0",
+      "honors": ["校级优秀毕业生", "ACM-ICPC 区域赛银奖"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "微信支付商户助手",
+      "role": "前端负责人",
+      "description": "为微信支付商户提供订单管理、数据看板、营销工具的一站式小程序。负责整体技术方案设计与核心模块开发。",
+      "technologies": ["微信小程序", "TypeScript", "ECharts", "WebSocket"],
+      "outcomes": [
+        "上线后商户日活跃率提升至65%",
+        "数据看板首屏加载从 3.2s 优化至 1.1s"
+      ],
+      "url": "https://github.com/zhangsan/wxpay-merchant"
+    }
+  ],
+  "additional": {
+    "certifications": ["AWS Solutions Architect Associate"],
+    "interests": ["开源贡献", "技术写作"]
+  }
+}

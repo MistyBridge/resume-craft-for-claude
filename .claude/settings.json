@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip install *)",
+      "Bash(python scripts/*.py *)",
+      "Bash(python converters/*.py *)",
+      "Bash(python -m pip install *)",
+      "Bash(python3 -m pip install *)",
+      "Bash(node tools/*.js *)",
+      "Bash(npm *)",
+      "Bash(mkdir -p *)",
+      "Bash(ls *)",
+      "Bash(cat *)",
+      "Bash(cp *)",
+      "Bash(gh *)",
+      "WebSearch",
+      "WebFetch"
+    ]
+  }
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ basics.name }} — 简历</title>
+<style>
+  /* ========================================================================
+     Dynamic Resume Template — Discipline-Driven Layout
+     Inspired by: Reactive-Resume (36k★), RenderCV (16k★), best-resume-ever (16k★)
+     ======================================================================== */
+
+  :root {
+    --p: {{ theme.colors.primary }};
+    --a: {{ theme.colors.accent }};
+    --t: {{ theme.colors.text }};
+    --tl: {{ theme.colors.text_light }};
+    --b: {{ theme.colors.border }};
+    --bg: {{ theme.colors.bg_light }};
+    --tag: {{ theme.colors.bg_tag }};
+    --name-c: {{ theme.colors.name_color }};
+    --page-bg: {{ theme.colors.page_bg or '#ffffff' }};
+    --fh: {{ theme.fonts.heading }};
+    --fb: {{ theme.fonts.body }};
+    --fs-name: {{ theme.fonts.name_size }};
+    --fs-sec: {{ theme.fonts.section_size }};
+    --fs-body: {{ theme.fonts.body_size }};
+    --fs-sm: {{ theme.fonts.small_size }};
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--fb);
+    font-size: var(--fs-body);
+    line-height: 1.7;
+    color: var(--t);
+    max-width: 210mm;
+    margin: 0 auto;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @page { size: A4; margin: 1.8cm 2cm 1.5cm 2cm; }
+  @media print {
+    body { max-width: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding-bottom: 14px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid var(--p);
+  }
+  .header .name {
+    font-family: var(--fh);
+    font-size: var(--fs-name);
+    font-weight: 700;
+    color: var(--name-c);
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+  .header .title { font-size: var(--fs-body); color: var(--tl); margin-bottom: 6px; }
+  .header .contact {
+    display: flex; justify-content: center; flex-wrap: wrap;
+    gap: 4px 18px; font-size: var(--fs-sm); color: var(--tl);
+  }
+  .header .contact a { color: var(--a); text-decoration: none; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 10px; }
+  .sec-title {
+    font-family: var(--fh);
+    font-size: var(--fs-sec);
+    font-weight: 700;
+    color: var(--p);
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid var(--p);
+  }
+  .sec-title::after {
+    content: '';
+    display: block;
+    width: 36px; height: 2.5px;
+    background: var(--a);
+    margin-top: 2px;
+  }
+
+  /* emphasis classes */
+  .emphasis-dominant .sec-title { font-size: calc(var(--fs-sec) + 1pt); color: #000; }
+  .emphasis-dominant { margin-bottom: 14px; }
+  .emphasis-high { margin-bottom: 12px; }
+  .emphasis-normal { margin-bottom: 10px; }
+
+  /* ── Summary ── */
+  .summary-text { font-size: var(--fs-body); line-height: 1.8; text-align: justify; }
+
+  /* ── Experience Items ── */
+  .item { margin-bottom: 8px; }
+  .item-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; margin-bottom: 1px;
+  }
+  .item-header .lh { font-weight: 600; font-size: var(--fs-body); color: var(--p); }
+  .item-header .lh .company { font-weight: 700; }
+  .item-header .rh { font-size: var(--fs-sm); color: var(--tl); white-space: nowrap; }
+  .item-sub { font-size: var(--fs-sm); color: var(--tl); margin-bottom: 3px; }
+  .item ul { list-style: none; padding-left: 0; }
+  .item ul li {
+    position: relative; padding-left: 15px; margin-bottom: 2px;
+    font-size: var(--fs-body); line-height: 1.6;
+  }
+  .item ul li::before {
+    content: ''; position: absolute; left: 0; top: 0.6em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--a);
+  }
+  .item.highlight {
+    border-left: 3px solid var(--a); padding-left: 12px; margin-left: -15px;
+  }
+
+  /* ── Skills ── */
+  .skills-block { margin-bottom: 6px; }
+  .skills-block h4 {
+    font-size: var(--fs-sm); font-weight: 600; color: var(--p);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px;
+  }
+  .tag {
+    display: inline-block; background: var(--tag); color: var(--t);
+    padding: 2px 10px; margin: 2px 4px 2px 0; border-radius: 3px;
+    font-size: var(--fs-sm); font-family: var(--fh);
+  }
+  .tag.accent { background: var(--a); color: #fff; }
+
+  /* skill bars */
+  .skill-bar-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 3px; }
+  .skill-bar-label { min-width: 80px; font-size: var(--fs-sm); color: var(--t); }
+  .skill-bar-track { flex: 1; height: 4px; background: var(--b); border-radius: 2px; overflow: hidden; }
+  .skill-bar-fill { height: 100%; background: var(--a); border-radius: 2px; }
+
+  /* ── Projects ── */
+  .proj { margin-bottom: 8px; }
+  .proj-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+  .proj-head .pn { font-weight: 600; font-size: var(--fs-body); color: var(--p); }
+  .proj-head .pr { font-size: var(--fs-sm); color: var(--tl); }
+  .proj-tech { margin: 3px 0; }
+  .proj-desc { font-size: var(--fs-body); margin-top: 2px; line-height: 1.6; }
+
+  /* ── Education ── */
+  .edu-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 3px; }
+  .edu-row .school { font-weight: 600; font-size: var(--fs-body); color: var(--p); }
+  .edu-row .date { font-size: var(--fs-sm); color: var(--tl); }
+  .edu-meta { font-size: var(--fs-sm); color: var(--tl); margin-bottom: 2px; }
+
+  /* ── Additional ── */
+  .misc-row { margin-bottom: 3px; font-size: var(--fs-body); }
+  .misc-row strong { color: var(--p); font-size: var(--fs-sm); }
+</style>
+</head>
+<body style="background:var(--page-bg);">
+
+<!-- Header -->
+<header class="header">
+  <h1 class="name">{{ basics.name }}</h1>
+  {% if basics.title %}<p class="title">{{ basics.title }}</p>{% endif %}
+  <div class="contact">
+    {% if basics.email %}<span>{{ basics.email }}</span>{% endif %}
+    {% if basics.phone %}<span>{{ basics.phone }}</span>{% endif %}
+    {% if basics.location %}<span>{{ basics.location }}</span>{% endif %}
+    {% if basics.github %}<a href="https://github.com/{{ basics.github }}">github.com/{{ basics.github }}</a>{% endif %}
+    {% if basics.linkedin %}<span>{{ basics.linkedin }}</span>{% endif %}
+    {% if basics.website %}<a href="{{ basics.website }}">{{ basics.website }}</a>{% endif %}
+  </div>
+</header>
+
+{#
+  ═══════════════════════════════════════════════════════════════
+  DYNAMIC SECTION RENDERING — driven by discipline.sections order
+  Each section is rendered only if data exists AND it's in the
+  discipline's sections list (with the exception of 'summary'
+  which also checks show_summary).
+  ═══════════════════════════════════════════════════════════════
+#}
+{% for sec_id in discipline.sections %}
+  {% set label = discipline.section_labels.get(sec_id, sec_id) %}
+  {% set emphasis = discipline.emphasis.get(sec_id, 'normal') %}
+
+  {# ── Summary ── #}
+  {% if sec_id == 'summary' and discipline.show_summary and (summary and (summary.polished or summary.raw)) %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    <p class="summary-text">{{ summary.polished or summary.raw }}</p>
+  </div>
+  {% endif %}
+
+  {# ── Skills ── #}
+  {% if sec_id == 'skills' and skills %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    {% if skills.hard_skills %}
+    <div class="skills-block">
+      <h4>技术能力</h4>
+      {% if show_skill_bars %}
+        {% for s in skills.hard_skills %}
+        <div class="skill-bar-wrap">
+          <span class="skill-bar-label">{{ s.name }}</span>
+          <div class="skill-bar-track">
+            {% set pct = {'精通': 92, '熟练': 72, '熟悉': 50, '了解': 28}.get(s.proficiency, 50) %}
+            <div class="skill-bar-fill" style="width:{{ pct }}%;"></div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <p>
+        {% for s in skills.hard_skills %}
+          <span class="tag{% if s.proficiency == '精通' %} accent{% endif %}">{{ s.name }}{% if s.proficiency %} · {{ s.proficiency }}{% endif %}{% if s.years %} · {{ s.years }}年{% endif %}</span>
+        {% endfor %}
+        </p>
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if skills.tools %}
+    <div class="skills-block"><h4>工具 / 平台</h4>
+      <p>{% for t in skills.tools %}<span class="tag">{{ t }}</span>{% endfor %}</p>
+    </div>
+    {% endif %}
+    {% if skills.languages %}
+    <div class="skills-block"><h4>语言能力</h4>
+      <p>{% for l in skills.languages %}<span class="tag">{{ l.name }} ({{ l.level }})</span>{% endfor %}</p>
+    </div>
+    {% endif %}
+    {% if skills.soft_skills %}
+    <div class="skills-block"><h4>软技能</h4>
+      <p>{% for s in skills.soft_skills %}<span class="tag">{{ s }}</span>{% endfor %}</p>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {# ── Experience ── #}
+  {% if sec_id == 'experience' and experience %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    {% for exp in experience %}
+    <div class="item{% if exp.highlight %} highlight{% endif %}">
+      <div class="item-header">
+        <span class="lh"><span class="company">{{ exp.company }}</span>{% if exp.title %} · {{ exp.title }}{% endif %}</span>
+        <span class="rh">{{ exp.start_date }} — {{ exp.end_date or '至今' }}</span>
+      </div>
+      {% if exp.location %}<div class="item-sub">{{ exp.location }}</div>{% endif %}
+      {% if exp.bullets %}
+      <ul>{% for b in exp.bullets %}<li>{{ b.polished or b.raw }}</li>{% endfor %}</ul>
+      {% endif %}
+      {% if exp.technologies %}
+      <div class="item-sub" style="margin-top:4px;">
+        {% for t in exp.technologies %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ── Projects ── #}
+  {% if sec_id == 'projects' and projects %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    {% for proj in projects %}
+    <div class="proj">
+      <div class="proj-head">
+        <span class="pn">{{ proj.name }}</span>
+        <span class="pr">{{ proj.role or '' }}</span>
+      </div>
+      {% if proj.technologies %}
+      <div class="proj-tech">
+        {% for t in proj.technologies %}<span class="tag">{{ t }}</span>{% endfor %}
+        {% if proj.url %}<a href="{{ proj.url }}" style="font-size:var(--fs-sm);color:var(--a);text-decoration:none;margin-left:8px;">🔗 {{ proj.url }}</a>{% endif %}
+      </div>
+      {% endif %}
+      {% if proj.description %}<p class="proj-desc">{{ proj.description }}</p>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ── Education ── #}
+  {% if sec_id == 'education' and education %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    {% for edu in education %}
+    <div class="edu-row">
+      <span class="school">{{ edu.school }}{% if edu.degree %} · {{ edu.degree }}{% endif %}{% if edu.major %} · {{ edu.major }}{% endif %}</span>
+      <span class="date">{{ edu.start_date }} — {{ edu.end_date or '至今' }}</span>
+    </div>
+    {% if edu.gpa or edu.honors %}
+    <div class="edu-meta">
+      {% if edu.gpa %}GPA {{ edu.gpa }}{% endif %}
+      {% for h in edu.honors %}<span class="tag" style="margin-left:4px;">{{ h }}</span>{% endfor %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# ── Additional ── #}
+  {% if sec_id == 'additional' and additional %}
+  <div class="section emphasis-{{ emphasis }}">
+    <h2 class="sec-title">{{ label }}</h2>
+    {% if additional.certifications %}
+    <div class="misc-row"><strong>证书</strong>&ensp;{{ additional.certifications | join(' · ') }}</div>
+    {% endif %}
+    {% if additional.publications %}
+    <div class="misc-row"><strong>发表</strong>&ensp;{{ additional.publications | join(' · ') }}</div>
+    {% endif %}
+    {% if additional.patents %}
+    <div class="misc-row"><strong>专利</strong>&ensp;{{ additional.patents | join(' · ') }}</div>
+    {% endif %}
+    {% if additional.interests %}
+    <div class="misc-row"><strong>兴趣</strong>&ensp;{{ additional.interests | join(' · ') }}</div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+{% endfor %}
+
+</body>
+</html>

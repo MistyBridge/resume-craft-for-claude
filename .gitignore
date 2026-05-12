@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# User data (personal info — excluded from git)
+data/input/*
+!data/input/.gitkeep
+data/profiles/*
+data/output/*
+
+# Sample data (demo purpose — included in git)
+!data/profiles/sample.json
+!data/output/sample/
+
+# Node.js (installed by tools/setup)
+node_modules/
+tools/node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# Local settings (personal paths)
+.claude/settings.local.json

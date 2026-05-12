@@ -1,0 +1,15 @@
+{
+  "name": "resume-skill-tools",
+  "version": "1.0.0",
+  "description": "Node.js tools for resume generation — DOCX and PDF export",
+  "private": true,
+  "scripts": {
+    "gen-docx": "node gen-docx.js",
+    "gen-pdf": "node gen-pdf.js",
+    "setup": "npm install"
+  },
+  "dependencies": {
+    "docx": "^9.0.0",
+    "puppeteer": "^24.0.0"
+  }
+}

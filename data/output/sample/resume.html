@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张三 - 简历</title>
+<style>
+  /* ====== Reset & Base ====== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #2c3e80;
+    --text: #333333;
+    --text-light: #555555;
+    --border: #dddddd;
+    --bg-light: #f8f9fa;
+    --font-heading: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --font-body: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --font-mono: "SF Mono", "Consolas", "Courier New", monospace;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 11pt;
+    line-height: 1.7;
+    color: var(--text);
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ====== Print Settings ====== */
+  @page {
+    size: A4;
+    margin: 1.8cm 2cm 1.5cm 2cm;
+  }
+
+  @media print {
+    body {
+      max-width: none;
+      padding: 0;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .page-break { page-break-after: always; }
+    .no-break { page-break-inside: avoid; }
+  }
+
+  /* ====== Header ====== */
+  .header {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 14px;
+  }
+
+  .header .name {
+    font-family: var(--font-heading);
+    font-size: 22pt;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+
+  .header .title {
+    font-size: 11pt;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .header .contact {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    font-size: 9.5pt;
+    color: var(--text-light);
+  }
+
+  .header .contact .sep {
+    color: var(--border);
+  }
+
+  /* ====== Sections ====== */
+  .section {
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--primary);
+    padding-bottom: 3px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ====== Summary ====== */
+  .summary-text {
+    font-size: 10.5pt;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  /* ====== Experience & Education Items ====== */
+  .item {
+    margin-bottom: 10px;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: 2px;
+  }
+
+  .item-header .left {
+    font-weight: 600;
+    font-size: 11pt;
+    color: var(--primary);
+  }
+
+  .item-header .left .company {
+    font-weight: 700;
+  }
+
+  .item-header .right {
+    font-size: 9.5pt;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
+
+  .item-sub {
+    font-size: 10pt;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+
+  .item ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .item ul li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 2px;
+    font-size: 10.5pt;
+    line-height: 1.6;
+  }
+
+  .item ul li::before {
+    content: "·";
+    position: absolute;
+    left: 2px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ====== Skills ====== */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+  }
+
+  .skill-category {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .skill-category h4 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 3px;
+  }
+
+  .skill-category p {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .skill-tag {
+    display: inline-block;
+    background: var(--bg-light);
+    padding: 1px 8px;
+    margin: 1px 3px 1px 0;
+    border-radius: 2px;
+    font-size: 9.5pt;
+  }
+
+  /* ====== Projects ====== */
+  .project-item {
+    margin-bottom: 8px;
+  }
+
+  .project-item .project-name {
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--primary);
+  }
+
+  .project-item .project-tech {
+    font-size: 9.5pt;
+    color: var(--text-light);
+  }
+
+  .project-item p {
+    font-size: 10pt;
+    margin-top: 2px;
+  }
+
+  /* ====== Misc ====== */
+  .inline-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    font-size: 10pt;
+  }
+
+  .education-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 3px;
+  }
+
+  .education-item .school {
+    font-weight: 600;
+    font-size: 10.5pt;
+  }
+
+  .education-item .date {
+    font-size: 9.5pt;
+    color: var(--text-light);
+  }
+
+  .honors {
+    font-size: 10pt;
+    color: var(--text-light);
+    margin-top: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== Header ====== -->
+<div class="header">
+  <div class="name">张三</div>
+  
+  <div class="title">高级前端开发工程师</div>
+  
+  <div class="contact">
+    <span>zhangsan@example.com</span>
+    <span>138-0000-0000</span>
+    <span>深圳 · 广东</span>
+    <span>github.com/zhangsan</span>
+    <span>linkedin.com/in/zhangsan</span>
+    
+  </div>
+</div>
+
+<!-- ====== Summary ====== -->
+
+<div class="section">
+  <div class="section-title">个人总结</div>
+  <div class="summary-text">拥有5年前端开发经验，专注于 React 生态与小程序开发。具备从0到1搭建前端工程化体系的能力，对性能优化有深入实践。善于跨团队协作，有技术指导经验。</div>
+</div>
+
+
+<!-- ====== Skills ====== -->
+
+<div class="section">
+  <div class="section-title">专业技能</div>
+  <div class="skills-grid">
+    
+    <div class="skill-category">
+      <h4>技术技能</h4>
+      <p>
+      
+        <span class="skill-tag">React <small>(精通)</small></span>
+      
+        <span class="skill-tag">TypeScript <small>(精通)</small></span>
+      
+        <span class="skill-tag">Vue.js <small>(熟练)</small></span>
+      
+        <span class="skill-tag">Node.js <small>(熟练)</small></span>
+      
+        <span class="skill-tag">微信小程序 <small>(精通)</small></span>
+      
+        <span class="skill-tag">Webpack/Vite <small>(熟练)</small></span>
+      
+      </p>
+    </div>
+    
+    
+    <div class="skill-category">
+      <h4>工具 / 平台</h4>
+      <p>
+      
+        <span class="skill-tag">Git</span>
+      
+        <span class="skill-tag">Docker</span>
+      
+        <span class="skill-tag">GitHub Actions</span>
+      
+        <span class="skill-tag">Jest</span>
+      
+        <span class="skill-tag">Figma</span>
+      
+      </p>
+    </div>
+    
+    
+    <div class="skill-category">
+      <h4>语言能力</h4>
+      <p>
+      
+        <span class="skill-tag">中文 (母语)</span>
+      
+        <span class="skill-tag">英语 (商务交流)</span>
+      
+      </p>
+    </div>
+    
+    
+    <div class="skill-category">
+      <h4>软技能</h4>
+      <p>
+      
+        <span class="skill-tag">跨部门协作</span>
+      
+        <span class="skill-tag">技术方案设计</span>
+      
+        <span class="skill-tag">新人指导</span>
+      
+      </p>
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- ====== Experience ====== -->
+
+<div class="section no-break">
+  <div class="section-title">工作经历</div>
+  
+  <div class="item">
+    <div class="item-header">
+      <span class="left">
+        
+        <span class="company">腾讯科技</span> | 前端开发工程师
+        
+      </span>
+      <span class="right">2022-03 - 2025-06</span>
+    </div>
+    
+    <div class="item-sub">深圳</div>
+    
+    
+    <ul>
+      
+      <li>主导微信小程序支付与订单核心模块的前端架构设计与开发，覆盖日活用户200万+</li>
+      
+      <li>针对小程序首屏加载瓶颈进行系统分析，通过分包加载与资源预加载策略将首屏时间降低35%</li>
+      
+      <li>从0到1搭建团队前端工程化体系，统一 ESLint/Prettier 规范，集成 CI/CD 流水线</li>
+      
+    </ul>
+    
+    
+    <div class="item-sub" style="margin-top:3px;">
+      <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span class="skill-tag">微信小程序</span><span class="skill-tag">Webpack</span><span class="skill-tag">Jest</span>
+    </div>
+    
+  </div>
+  
+  <div class="item">
+    <div class="item-header">
+      <span class="left">
+        
+        <span class="company">字节跳动</span> | 前端开发工程师
+        
+      </span>
+      <span class="right">2020-07 - 2022-02</span>
+    </div>
+    
+    <div class="item-sub">北京</div>
+    
+    
+    <ul>
+      
+      <li>参与抖音电商内部管理后台的 React 技术栈改造，完成12个核心业务模块的组件化重构</li>
+      
+      <li>主导团队公共 UI 组件库的设计与开发，覆盖表单/表格/弹窗等高频场景，团队复用率达80%</li>
+      
+    </ul>
+    
+    
+    <div class="item-sub" style="margin-top:3px;">
+      <span class="skill-tag">React</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Ant Design</span><span class="skill-tag">Less</span>
+    </div>
+    
+  </div>
+  
+</div>
+
+
+<!-- ====== Projects ====== -->
+
+<div class="section">
+  <div class="section-title">项目作品</div>
+  
+  <div class="project-item">
+    <div>
+      <span class="project-name">微信支付商户助手</span>
+      <span style="color:var(--text-light);font-size:10pt;"> | 前端负责人</span>
+      <span style="font-size:9pt;color:var(--accent);"> | https://github.com/zhangsan/wxpay-merchant</span>
+    </div>
+    <div class="project-tech">
+      <span class="skill-tag">微信小程序</span><span class="skill-tag">TypeScript</span><span class="skill-tag">ECharts</span><span class="skill-tag">WebSocket</span>
+    </div>
+    <p>为微信支付商户提供订单管理、数据看板、营销工具的一站式小程序。负责整体技术方案设计与核心模块开发。</p>
+    
+    <ul style="list-style:none;padding-left:0;">
+      
+      <li style="padding-left:14px;position:relative;font-size:10pt;margin-bottom:1px;">
+        <span style="position:absolute;left:2px;color:var(--accent);">·</span>上线后商户日活跃率提升至65%
+      </li>
+      
+      <li style="padding-left:14px;position:relative;font-size:10pt;margin-bottom:1px;">
+        <span style="position:absolute;left:2px;color:var(--accent);">·</span>数据看板首屏加载从 3.2s 优化至 1.1s
+      </li>
+      
+    </ul>
+    
+  </div>
+  
+</div>
+
+
+<!-- ====== Education ====== -->
+
+<div class="section no-break">
+  <div class="section-title">教育背景</div>
+  
+  <div class="education-item">
+    <span class="school">华中科技大学 — 本科 · 计算机科学与技术</span>
+    <span class="date">2016-09 - 2020-06</span>
+  </div>
+  
+  <div class="honors">GPA: 3.6/4.0</div>
+  
+  
+  <div class="honors">
+    
+    <span class="skill-tag">校级优秀毕业生</span>
+    
+    <span class="skill-tag">ACM-ICPC 区域赛银奖</span>
+    
+  </div>
+  
+  
+</div>
+
+
+<!-- ====== Additional ====== -->
+
+<div class="section">
+  <div class="section-title">其他信息</div>
+  
+  <div style="margin-bottom:6px;">
+    <strong style="font-size:10pt;">证书：</strong>
+    <span class="inline-list">
+      
+      <span>AWS Solutions Architect Associate</span>
+      
+    </span>
+  </div>
+  
+  
+  
+  <div>
+    <strong style="font-size:10pt;">兴趣：</strong>
+    <span>开源贡献 · 技术写作</span>
+  </div>
+  
+</div>
+
+
+</body>
+</html>
