@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-# @MistyBridge — Resume Craft
+# @MistyBridge — Resume Craft for Claude Code
 """
-Render a resume JSON profile into a self-contained HTML file using Jinja2.
+Resume Craft for Claude Code - Claude Code专属智能简历渲染引擎
 
-Features:
-  - 16+ discipline-specific template configs (auto-matched or manual)
-  - 6 built-in themes with dynamic CSS custom properties
-  - Adaptive section ordering and emphasis per discipline
-  - Skill proficiency bars (optional)
+核心功能：Jinja2模板渲染，支持16学科模板、6套视觉主题、ATS优化简历生成
+适配：Claude Code Skill，支持校招/社招全场景简历生成
 """
 
 import argparse

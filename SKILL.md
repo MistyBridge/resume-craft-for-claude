@@ -1,3 +1,5 @@
+# Resume Craft for Claude Code - 专为Claude Code打造的智能简历生成Skill，支持ATS优化、JD匹配、多格式导出
+
 ---
 name: resume
 author: MistyBridge
