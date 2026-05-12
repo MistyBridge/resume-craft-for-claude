@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @MistyBridge — Resume Craft
 /**
  * gen-pdf.js — Convert HTML resume to PDF using Puppeteer.
  *

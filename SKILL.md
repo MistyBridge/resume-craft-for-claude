@@ -1,5 +1,6 @@
 ---
 name: resume
+author: MistyBridge
 description: 智能简历生成器。基于用户任意形式提供的信息生成专业简历。
              支持经历润色（三选一）、岗位定向匹配、HTML预览及PDF/DOCX/MD导出。
              触发词：简历、resume、CV、求职、帮我写简历。

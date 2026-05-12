@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# @MistyBridge — Resume Craft
 """Export HTML resume to MD / PDF.
 
 Unified CLI entry point. Delegates to converters/ for each format.

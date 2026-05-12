@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# @MistyBridge — Resume Craft
 """Convert HTML resume to PDF via WeasyPrint.
 
 Usage:

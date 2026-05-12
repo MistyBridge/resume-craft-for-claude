@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# @MistyBridge — Resume Craft
 """
 Render a resume JSON profile into a self-contained HTML file using Jinja2.
 

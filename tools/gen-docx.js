@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @MistyBridge — Resume Craft
 /**
  * gen-docx.js — Generate a professional .docx resume from profile JSON.
  *
