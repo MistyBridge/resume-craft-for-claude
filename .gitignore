@@ -26,5 +26,19 @@ tools/node_modules/
 .vscode/
 .idea/
 
-# Local settings (personal paths)
+# Lint cache
+.pytest_cache/
+.eslintcache
+
+# Logs
+logs/*
+!logs/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local settings & backups
 .claude/settings.local.json
+*.local.json
+*.bak

@@ -1,14 +1,13 @@
-# Resume Skill — Python Dependencies
+# Resume Craft for Claude Code — Python Dependencies
 # Install: pip install -r requirements.txt
+# Minimum Python version: 3.9+
 
-jinja2>=3.0
+jinja2==3.1.6
 html2text>=2024.2
-weasyprint>=60.0
+weasyprint==66.0
 
-# DOCX generation (Node.js alternative)
-# cd tools && npm install
-# → uses docx npm package (github.com/dolanmedia/docx, 4k+ stars)
+# Optional: OCR support
+# pip install pytesseract pillow
 
-# PDF generation (Node.js alternative)
-# cd tools && npm install
-# → uses puppeteer (github.com/puppeteer/puppeteer, 88k+ stars)
+# Optional: Audio transcription
+# pip install openai-whisper
